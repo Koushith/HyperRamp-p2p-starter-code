@@ -25,7 +25,7 @@ Follow these steps to get started with the P2P Onramp and Offramp project:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your/repo.git
+   git clone https://github.com/Koushith/HyperRamp-p2p-starter-code.git
    ```
 
 2. Install dependencies:
@@ -82,7 +82,7 @@ Update the directory structure to reflect the new additions:
 ```
 src
  - components
-   - primitive (new components)
+   - primitive
        - Input
        - TextArea
        - Card
@@ -105,8 +105,13 @@ src
    - AuthNavigator
    - MainNavigator
  - utils
-   - api
+   - constants
    - helpers
+ - theme
+     - colors
+     - typography
+     - spacing
+     - index
  - hooks
  - redux (new directory for Redux setup)
    - actions
@@ -146,6 +151,13 @@ here are some documents to read:
 - If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
 - If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
 
+## Developer
+
+**Developer:** Koushith Amin
+
+- **Twitter:** [@koushithAmin](https://twitter.com/koushithAmin)
+- **Portfolio:** [koushith.com](https://koushith.com)
+
 ## Usage
 
 This project is designed to provide a solid foundation for building P2P onramp and offramp solutions. You can easily customize and extend it to fit your specific business requirements.
@@ -154,7 +166,7 @@ This project is designed to provide a solid foundation for building P2P onramp a
 
 This project is open-source and available under the [MIT License](LICENSE).
 
-Happy coding! If you have any questions or need assistance, feel free to reach out to us.
+Happy coding! If you have any questions or need assistance, feel free to reach out to me.
 
 ---
 
