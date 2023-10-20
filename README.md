@@ -34,12 +34,19 @@ Follow these steps to get started with the P2P Onramp and Offramp project:
    cd p2p-onramp-offramp
    npm install
    ```
+3. Run the App:
 
-3. Start developing your business logic and connect it to the provided components and design system.
+   ```bash
+   npm start //will start the metro server
+   a - android
+   i - ios
+   ```
 
-4. Customize the design system to match your branding and visual requirements.
+4. Start developing your business logic and connect it to the provided components and design system.
 
-5. Build and test your application on both iOS and Android platforms.
+5. Customize the design system to match your branding and visual requirements.
+
+6. Build and test your application on both iOS and Android platforms.
 
 ## Step 3: Modifying your App
 
@@ -119,16 +126,6 @@ src
    - store
 ```
 
-### Few Sample Screenshots
-<img width="550" alt="Screenshot 2023-10-19 at 5 15 25 PM" src="https://github.com/Koushith/HyperRamp-p2p-starter-code/assets/30016242/23359182-5c87-415a-adf2-c105beb613d3">
-<img width="550" alt="Screenshot 2023-10-19 at 5 17 57 PM" src="https://github.com/Koushith/HyperRamp-p2p-starter-code/assets/30016242/d1991c37-cc40-4dd4-b0bd-24ba58ddde48">
-<img width="550" alt="Screenshot 2023-10-19 at 5 18 56 PM" src="https://github.com/Koushith/HyperRamp-p2p-starter-code/assets/30016242/69ceb767-fc28-4e38-9839-503679639050">
-<img width="550" alt="Screenshot 2023-10-19 at 5 19 21 PM" src="https://github.com/Koushith/HyperRamp-p2p-starter-code/assets/30016242/c724871a-7a98-41ab-85ab-914a5619b63d">
-<img width="550" alt="Screenshot 2023-10-19 at 5 19 35 PM" src="https://github.com/Koushith/HyperRamp-p2p-starter-code/assets/30016242/4110e2ed-ae51-403b-bd5d-e8fafb63d154">
-<img width="550" alt="Screenshot 2023-10-19 at 7 25 52 PM" src="https://github.com/Koushith/HyperRamp-p2p-starter-code/assets/30016242/9cde9f7e-c6a0-4d6b-b73c-0c00d23d71bc">
-<img width="644" alt="Screenshot 2023-10-19 at 8 50 46 PM" src="https://github.com/Koushith/HyperRamp-p2p-starter-code/assets/30016242/ad6c2869-1db0-403c-9709-ecc8b87cf9f9">
-
-
 ## Surprise----
 
 if you are intrested in building this, we got you covered🚀
@@ -180,4 +177,4 @@ Happy coding! If you have any questions or need assistance, feel free to reach o
 
 ---
 
-Feel free to replace the placeholders with your actual repository information and expand the README to include more specific details about your project, such as installation instructions, usage examples, and any other relevant information.
+Feel free to replace the placeholders and add your business logic. extend this starter code.
