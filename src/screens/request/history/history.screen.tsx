@@ -6,6 +6,7 @@ import RequestCard from '../components/request-card/request-card.component';
 import Spacer from '../../../components/spacer/spacer.component';
 import styled from 'styled-components/native';
 import Tab from '../components/tab/tab.component';
+import Text from '../../../components/text/text.component';
 
 const TAB_ITEMS = ['All', 'Completed', 'Pending', 'Expired'];
 
@@ -13,13 +14,15 @@ const TabContainer = styled.View`
   flex-direction: row;
 `;
 
-const RequestHistory = () => {
+const RequestHistoryScreen = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   return (
     <Screen>
-      <Header />
-      <Spacer vertical={24} />
+      <Header actionType="quit" />
+      <Spacer vertical={16} />
+      <Text variant="heading">Request History</Text>
+      <Spacer vertical={12} />
       <TabContainer>
         {TAB_ITEMS.map((tab, index) => {
           return (
@@ -35,28 +38,14 @@ const RequestHistory = () => {
       </TabContainer>
       <Spacer vertical={16} />
       <ScrollView>
-        <RequestCard
-          varient="mini"
-          type="awaiting"
-          receive={2944.56}
-          sell={1.5}
-        />
-        <Spacer vertical={10} />
-        <RequestCard
-          varient="full"
-          type="completed"
-          receive={2944.56}
-          sell={1.5}
-        />
-        <RequestCard
-          varient="mini"
-          type="expired"
-          receive={2944.56}
-          sell={1.5}
-        />
+        <RequestCard type="awaiting" receive={2944.56} sell={1.5} />
+        <Spacer vertical={12} />
+        <RequestCard type="completed" receive={2944.56} sell={1.5} />
+        <Spacer vertical={12} />
+        <RequestCard type="expired" receive={2944.56} sell={1.5} />
       </ScrollView>
     </Screen>
   );
 };
 
-export default RequestHistory;
+export default RequestHistoryScreen;

@@ -5,6 +5,7 @@ import styled from 'styled-components/native';
 interface TextComponentProps extends TextProps {
   variant?: 'heading' | 'body' | 'subheading' | 'button' | 'caption';
   color?: string;
+  underline?: boolean;
 }
 
 const BaseText = styled.Text<TextComponentProps>`
@@ -26,6 +27,8 @@ const BaseText = styled.Text<TextComponentProps>`
   }};
   font-weight: ${({variant}) => 500};
   color: ${({theme, color}) => color ?? theme.colors.text};
+  text-decoration-line: ${({theme, underline}) =>
+    underline ? 'underline' : underline};
 `;
 
 const Text: React.FC<TextComponentProps> = ({children, ...rest}) => {

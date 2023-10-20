@@ -8,12 +8,20 @@ import Spacer from '../../../../components/spacer/spacer.component';
 import Button from '../../../../components/button/button.component';
 
 interface RequestCardProps {
-  type: 'awaiting' | 'completed' | 'expired';
+  type?: 'awaiting' | 'completed' | 'expired';
+  label?: string;
   sell: number;
   receive: number;
   varient?: 'mini' | 'full';
   date?: string;
   depositAccount?: string;
+  onShare?: () => void;
+  logo?: boolean;
+  theme?: 'default' | 'primary';
+  timestamp?: string;
+  ethValue?: string;
+  firstLabel?: string;
+  secondLabel?: string;
 }
 
 const Head = styled.View`
@@ -74,19 +82,58 @@ const ShareButton = styled(Button)<{width: number}>`
   align-self: center;
 `;
 
+const Logo = styled.Image`
+  height: 90px;
+  width: 90px;
+  position: absolute;
+  top: -16px;
+  right: -18px;
+`;
+
+const EthValuePanel = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const Requote = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+const RequoteIcon = styled(AntIcon)`
+  color: ${({theme}) => theme.colors.white};
+  margin-right: 6px;
+`;
+
 const AWAITING_COLOR = '#E5D4C0';
 const COMPLETED_COLOR = '#75E4B3';
 const EXPIRED_COLOR = '#E84855';
 const GREY = '#CECDD6';
+const WHITE = '#fff';
+const PRIMARY_COLOR = '#707BF7';
 
 const RequestCard: React.FC<RequestCardProps> = (props: RequestCardProps) => {
-  const {type, varient = 'mini', sell, receive, date, depositAccount} = props;
+  const {
+    type,
+    label,
+    varient = 'mini',
+    sell,
+    receive,
+    date,
+    depositAccount,
+    onShare,
+    logo,
+    theme = 'default',
+    firstLabel,
+    secondLabel,
+  } = props;
 
   const {width} = useWindowDimensions();
 
   return (
     <>
-      <Card>
+      <Card color={theme === 'primary' ? PRIMARY_COLOR : undefined}>
         <Head>
           <>
             {type === 'awaiting' && (
@@ -104,8 +151,13 @@ const RequestCard: React.FC<RequestCardProps> = (props: RequestCardProps) => {
                 Expired
               </Text>
             )}
+            {label && (
+              <Text variant="subheading" color={WHITE}>
+                {label}
+              </Text>
+            )}
           </>
-          {varient === 'mini' && (
+          {varient === 'mini' && !logo && (
             <TouchableOpacity onPress={() => {}}>
               <Icon name="right" />
             </TouchableOpacity>
@@ -114,35 +166,57 @@ const RequestCard: React.FC<RequestCardProps> = (props: RequestCardProps) => {
         <Spacer vertical={10} />
         <Middle>
           <SellContent>
-            <Text variant="subheading">Sell</Text>
+            <Text variant="subheading">{firstLabel ?? 'Sell'}</Text>
             <Text variant="button">{sell}</Text>
           </SellContent>
           <ReceiveContainer>
             <Seperator />
             <ReceiveContent>
-              <Text variant="subheading">Receive</Text>
+              <Text variant="subheading">{secondLabel ?? 'Receive'}</Text>
               <Text variant="button">{receive}</Text>
             </ReceiveContent>
           </ReceiveContainer>
         </Middle>
-        <HorizontalSeperator />
-        <Text variant="body" color={GREY}>
-          On Ethereum Chain
-        </Text>
-        <HorizontalSeperator />
-        <Footer>
-          <Text variant="body" color={GREY}>
-            Deposit into
-          </Text>
-          <Text variant="body" color={GREY}></Text>
-        </Footer>
+        {theme === 'default' && (
+          <>
+            <HorizontalSeperator />
+            <Text variant="body" color={GREY}>
+              On Ethereum Chain
+            </Text>
+            <HorizontalSeperator />
+            <Footer>
+              <Text variant="body" color={GREY}>
+                Deposit into
+              </Text>
+              <Text variant="body" color={GREY}></Text>
+            </Footer>
+          </>
+        )}
+        {theme === 'primary' && (
+          <EthValuePanel>
+            <Text variant="caption">{'1 ETH = 2,085.96 USD'}</Text>
+            <Requote>
+              <RequoteIcon name="clockcircleo" />
+              <Text variant="caption">{'Requoting in 10s'}</Text>
+            </Requote>
+          </EthValuePanel>
+        )}
         {varient === 'full' && <Spacer vertical={16} />}
         {varient === 'full' && (
           <ShareButton
             type="primary"
             text="Share Link"
             width={width / 2}
-            onPress={() => {}}
+            onPress={onShare}
+          />
+        )}
+        {logo && (
+          <Logo
+            source={
+              theme === 'primary'
+                ? require('../../../../assets/logos/logo-dark.png')
+                : require('../../../../assets/logos/logo-light.png')
+            }
           />
         )}
       </Card>

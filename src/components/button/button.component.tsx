@@ -7,6 +7,7 @@ interface ButtonProps extends TouchableOpacityProps {
   type: 'primary' | 'text' | 'icon';
   text?: string;
   icon?: React.ReactNode;
+  fit?: boolean;
 }
 
 const BaseButton = styled.TouchableOpacity<ButtonProps>`
@@ -20,6 +21,7 @@ const BaseButton = styled.TouchableOpacity<ButtonProps>`
       : type === 'icon'
       ? theme.colors.base
       : 'transparent'};
+  width: ${({fit}) => (fit ? 'auto' : '100%')};
 `;
 
 const Button: React.FC<ButtonProps> = ({type, text, icon, ...rest}) => {
