@@ -8,6 +8,7 @@ import styled from 'styled-components/native';
 import Input from '../../components/input/input.component';
 import Screen from '../../components/screen/screen.component';
 import Spacer from '../../components/spacer/spacer.component';
+import {useNavigation} from '@react-navigation/native';
 
 const AddnewBankContainer = styled.View`
   flex: 1;
@@ -20,6 +21,7 @@ const FormContainer = styled.View`
 
 const AddNewBank = () => {
   const refRBSheet = useRef();
+  const navigate = useNavigation();
   return (
     // <View
     //   style={{
@@ -80,7 +82,11 @@ const AddNewBank = () => {
               Please ensure all your details are accurate before adding
             </Text>
             <Spacer vertical={10} />
-            <Button type={'primary'} text="Add" />
+            <Button
+              type={'primary'}
+              text="Add"
+              onPress={() => navigate.navigate('Home')}
+            />
           </FormContainer>
         </ScrollView>
       </AddnewBankContainer>

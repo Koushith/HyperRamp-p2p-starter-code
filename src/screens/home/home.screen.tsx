@@ -7,7 +7,7 @@ import TopMenu from '../../components/top-menu/top-menu.component';
 import {BuySellTab, SellTab} from '../../components';
 import Spacer from '../../components/spacer/spacer.component';
 
-const HomeScreen: React.FunctionComponent = () => {
+const HomeScreen = () => {
   return (
     <Screen>
       <TopMenu />

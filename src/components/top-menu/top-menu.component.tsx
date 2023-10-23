@@ -6,6 +6,7 @@ import Hamburger from '../../assets/icons/hamburger.png';
 
 import React from 'react';
 import styled from 'styled-components/native';
+import {useNavigation} from '@react-navigation/native';
 
 const HeaderContainer = styled.View`
   flex-direction: row;
@@ -28,6 +29,7 @@ const WalletContainer = styled.View`
   border-radius: 100px;
 `;
 const TopMenu = () => {
+  const navigate = useNavigation();
   return (
     <HeaderContainer>
       <LeftIconContainer>
@@ -36,7 +38,10 @@ const TopMenu = () => {
       </LeftIconContainer>
       <WalletContainer>
         <Image source={User} />
-        <Text variant="body" style={{textTransform: 'uppercase'}}>
+        <Text
+          variant="body"
+          style={{textTransform: 'uppercase'}}
+          onPress={() => navigate.navigate('Wallet')}>
           Connect Wallet
         </Text>
       </WalletContainer>

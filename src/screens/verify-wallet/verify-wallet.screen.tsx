@@ -7,10 +7,12 @@ import Rainbow from '../../assets/icons/rainbow.png';
 import WalletConnect from '../../assets/icons/wallet-connect.png';
 import Coinbase from '../../assets/icons/coinbase.png';
 import Check from '../../assets/icons/check-circle.png';
-import {Image, View} from 'react-native';
+import {Alert, Image, Pressable, ScrollView, View} from 'react-native';
 import RequestCard from '../request/components/request-card/request-card.component';
 import Button from '../../components/button/button.component';
-
+import Binance from '../../assets/icons/binance.png';
+import {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 const ConnectWalletCard = styled.View`
   background-color: #3a393e;
   border-radius: 16px;
@@ -128,51 +130,131 @@ const ChainVerified = () => {
 };
 
 export const VerifyWallet = () => {
+  const [step, setStep] = useState(0);
+  const navigator = useNavigation();
   return (
     <Screen>
-      <Spacer vertical={10} />
-      <Text variant="heading">Before you proceed, begin with these steps</Text>
-      <Spacer vertical={8} />
-      {/* <ConnectWalletCard>
-        <Text variant="caption">Step 1/2 </Text>
-        <Spacer vertical={4} />
-        <Text variant="Subheading">Connect Wallet </Text>
-        <WalletsContainer>
-          <View style={{alignItems: 'center', justifyContent: 'center'}}>
-            <Image source={MetaMask} />
-            <Spacer vertical={2} />
-            <Text variant="caption">Meta Mask</Text>
-          </View>
-          <View style={{alignItems: 'center', justifyContent: 'center'}}>
-            <Image source={Rainbow} />
-            <Spacer vertical={2} />
-            <Text variant="caption">Rainbow</Text>
-          </View>
-          <View style={{alignItems: 'center', justifyContent: 'center'}}>
-            <Image source={WalletConnect} />
-            <Spacer vertical={2} />
-            <Text variant="caption">Wallet Connect</Text>
-          </View>
-          <View style={{alignItems: 'center', justifyContent: 'center'}}>
-            <Image source={Coinbase} />
-            <Spacer vertical={2} />
-            <Text variant="caption">CoinBase</Text>
-          </View>
-        </WalletsContainer>
-      </ConnectWalletCard> */}
-      <ChainSelected />
-      <Spacer vertical={16} />
-      {/* TODO: Make it reusable- move this below commented code to new one */}
-      {/* <ConnectWalletCard>
-        <Text variant="caption">Step 2/2 </Text>
-        <Spacer vertical={4} />
-        <Text variant="Subheading">Verify your identity with a claim </Text>
-        <Spacer vertical={18} />
-      </ConnectWalletCard> */}
+      <ScrollView>
+        <Spacer vertical={10} />
+        <Text variant="heading">
+          Before you proceed, begin with these steps
+        </Text>
+        <Spacer vertical={8} />
+        {/* st-1 */}
+        {/* <ConnectWalletCard>
+          <Text variant="caption">Step 1/2 </Text>
+          <Spacer vertical={4} />
+          <Text variant="Subheading">Connect Wallet </Text>
+          <WalletsContainer>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image source={MetaMask} />
+              <Spacer vertical={2} />
+              <Text variant="caption">Meta Mask</Text>
+            </View>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image source={Rainbow} />
+              <Spacer vertical={2} />
+              <Text variant="caption">Rainbow</Text>
+            </View>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image source={WalletConnect} />
+              <Spacer vertical={2} />
+              <Text variant="caption">Wallet Connect</Text>
+            </View>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image source={Coinbase} />
+              <Spacer vertical={2} />
+              <Text variant="caption">CoinBase</Text>
+            </View>
+          </WalletsContainer>
+        </ConnectWalletCard> */}
+        {/* <Spacer vertical={2} /> */}
+        {/* before */}
 
-      <ChainVerified />
-      <Spacer vertical={10} />
-      <Button type="primary" text="Proceed" />
+        <Spacer vertical={16} />
+        {/* TODO: Make it reusable- move this below commented code to new one */}
+
+        {/* st- 1 */}
+        {step === 0 && (
+          <>
+            <ConnectWalletCard>
+              <Text variant="caption">Step 1/2 </Text>
+              <Spacer vertical={4} />
+              <Text variant="Subheading">Connect Wallet </Text>
+              <WalletsContainer>
+                <Pressable
+                  style={{alignItems: 'center', justifyContent: 'center'}}
+                  onPress={() => {
+                    // alert('pressed');
+                    navigator.navigate('Wallet');
+                  }}>
+                  <Image source={MetaMask} />
+                  <Spacer vertical={2} />
+                  <Text variant="caption">Meta Mask</Text>
+                </Pressable>
+                <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                  <Image source={Rainbow} />
+                  <Spacer vertical={2} />
+                  <Text variant="caption">Rainbow</Text>
+                </View>
+                <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                  <Image source={WalletConnect} />
+                  <Spacer vertical={2} />
+                  <Text variant="caption">Wallet Connect</Text>
+                </View>
+                <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                  <Image source={Coinbase} />
+                  <Spacer vertical={2} />
+                  <Text variant="caption">CoinBase</Text>
+                </View>
+              </WalletsContainer>
+            </ConnectWalletCard>
+            <Spacer vertical={8} />
+            <ConnectWalletCard>
+              <Text variant="caption">Step 2/2 </Text>
+              <Spacer vertical={4} />
+              <Text variant="Subheading">
+                Verify your identity with a claim{' '}
+              </Text>
+              <Spacer vertical={18} />
+              <View style={{flexDirection: 'row', gap: 18}}>
+                <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                  <Image source={Binance} />
+                  <Spacer vertical={2} />
+                  <Text variant="caption">Binance</Text>
+                </View>
+
+                <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                  <Image source={Coinbase} />
+                  <Spacer vertical={2} />
+                  <Text variant="caption">CoinBase</Text>
+                </View>
+              </View>
+            </ConnectWalletCard>
+          </>
+        )}
+
+        {/* show after press */}
+        {step === 1 && (
+          <>
+            <ChainSelected />
+            <Spacer vertical={8} />
+            <ChainVerified />
+          </>
+        )}
+        {/* end */}
+        <Spacer vertical={10} />
+        <Button
+          type="primary"
+          text="Proceed"
+          onPress={() => {
+            setStep(step => step + 1);
+            if (step >= 1) {
+              navigator.navigate('Home');
+            }
+          }}
+        />
+      </ScrollView>
     </Screen>
   );
 };

@@ -6,6 +6,7 @@ import BaseCard from '../../components/card/card.component';
 import Spacer from '../../components/spacer/spacer.component';
 import Text from '../../components/text/text.component';
 import Button from '../../components/button/button.component';
+import {useNavigation} from '@react-navigation/native';
 
 const Logo = styled.Image`
   width: 50px;
@@ -63,10 +64,10 @@ const DATA = [
 
 interface OnBoardingProps {}
 
-const OnBoarding: React.FC<OnBoardingProps> = (props: OnBoardingProps) => {
+const OnBoarding = (props: any) => {
   const {width} = useWindowDimensions();
   const [currentPage, setCurrentPage] = useState<number>(0);
-
+  const navigate = useNavigation();
   return (
     <Screen>
       <Logo source={require('../../assets/logos/logo-light.png')} />
@@ -99,7 +100,11 @@ const OnBoarding: React.FC<OnBoardingProps> = (props: OnBoardingProps) => {
         ))}
       </IndicatorContainer>
       <Spacer vertical={20} />
-      <Button type="primary" text="Start" />
+      <Button
+        type="primary"
+        text="Start"
+        onPress={() => navigate.navigate('verifyWallet')}
+      />
     </Screen>
   );
 };

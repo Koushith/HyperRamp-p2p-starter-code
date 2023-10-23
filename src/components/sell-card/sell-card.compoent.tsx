@@ -1,10 +1,11 @@
-import {Image, View} from 'react-native';
+import {Image, Pressable, View} from 'react-native';
 import styled from 'styled-components/native';
 import Text from '../text/text.component';
 import ChevronDown from '../../assets/icons/chevron-down.png';
 import Preview from '../../assets/icons/preview.png';
 import Spacer from '../spacer/spacer.component';
 import Button from '../button/button.component';
+import {useNavigation} from '@react-navigation/native';
 
 const SellTabContainer = styled.View`
   margin-bottom: 8px;
@@ -47,26 +48,37 @@ const InputCard = styled.View`
 `;
 
 export const SellTab = () => {
+  const navigate = useNavigation();
   return (
     <SellTabContainer>
-      <TokenContainer>
+      <TokenContainer
+        onPress={() => {
+          navigate.navigate('Bank');
+        }}>
         <Text variant="body">Etherium</Text>
         <Image source={ChevronDown} />
       </TokenContainer>
 
       <InputCard>
-        <View
+        <Pressable
           style={{
             justifyContent: 'space-between',
             flexDirection: 'row',
             width: '100%',
+          }}
+          onPress={() => {
+            navigate.navigate('Bank');
           }}>
-          <Text variant="caption">I WANT TO Sell ETH </Text>
-          <View style={{flexDirection: 'row'}}>
-            <Text variant="caption">USD </Text>
+          <Text variant="caption" onPress={() => navigate.navigate('Bank')}>
+            I WANT TO Sell ETH{' '}
+          </Text>
+          <Pressable style={{flexDirection: 'row'}}>
+            <Text variant="caption" onPress={() => navigate.navigate('Bank')}>
+              USD{' '}
+            </Text>
             <Image source={ChevronDown} />
-          </View>
-        </View>
+          </Pressable>
+        </Pressable>
         <Spacer vertical={30} />
         <View
           style={{

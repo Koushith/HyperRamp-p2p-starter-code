@@ -5,6 +5,7 @@ import Button from '../../components/button/button.component';
 import styled from 'styled-components/native';
 import Input from '../../components/input/input.component';
 import Spacer from '../../components/spacer/spacer.component';
+import {useNavigation} from '@react-navigation/native';
 
 const AddnewBankContainer = styled.View`
   flex: 1;
@@ -16,6 +17,7 @@ const FormContainer = styled.View`
 `;
 
 const AddNewWallet = () => {
+  const navigate = useNavigation();
   return (
     // <View
     //   style={{
@@ -76,7 +78,13 @@ const AddNewWallet = () => {
               Please ensure all your details are accurate before adding
             </Text>
             <Spacer vertical={10} />
-            <Button type={'primary'} text="Add" />
+            <Button
+              type={'primary'}
+              text="Add"
+              onPress={() => {
+                navigate.navigate('verifyWallet');
+              }}
+            />
           </FormContainer>
         </ScrollView>
       </AddnewBankContainer>
