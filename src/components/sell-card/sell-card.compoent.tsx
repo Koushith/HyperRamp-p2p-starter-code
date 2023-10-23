@@ -110,7 +110,11 @@ export const SellTab = () => {
         request. This is inclusive in the total receive rate.
       </Text>
       <Spacer vertical={8} />
-      <Button type="primary" text="Create Request" />
+      <Button
+        type="primary"
+        text="Create Request"
+        onPress={() => navigate.navigate('ConfirmPay')}
+      />
     </SellTabContainer>
   );
 };

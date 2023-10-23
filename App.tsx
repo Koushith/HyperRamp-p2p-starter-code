@@ -10,7 +10,8 @@ import AddNewWallet from './src/screens/wallet/wallet.screen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ReceiveScreen from './src/screens/request/receive/receive.screen';
-import {VerifyWallet} from './src/screens';
+import {ConfirmScreen, VerifyWallet} from './src/screens';
+import {RequestSuccess} from './src/screens/request-success/request-success.screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -52,6 +53,16 @@ const App: React.FC = () => {
           <Stack.Screen
             name="verifyWallet"
             component={VerifyWallet}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="ConfirmPay"
+            component={ConfirmScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Success"
+            component={RequestSuccess}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
